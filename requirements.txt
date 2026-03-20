@@ -1,0 +1,9 @@
+numpy==1.26.4
+scipy
+colorama
+pdoc
+sphinx
+sphinx_rtd_theme
+myst-parser
+sphinx-markdown-builder
+pytest

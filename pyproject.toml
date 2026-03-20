@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vifpara"
+version = "1.3.3"
+description = "A visualization tool for VIF OpenFoam and MeshFree outputs."
+authors = [
+  { name = "Cyril Marx", email = "cyril.marx@v2c2.at" },
+  { name = "Florian Michelic", email = "florian.michelic@v2c2.at" },
+  { name = "Juliana Madritsch" }
+]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy==1.26.4",
+  "colorama",
+  "scipy"
+]
+
+[project.urls]
+Homepage = "https://www.virtual-vehicle.at/"
+Repository = "https://github.com/virtual-vehicle/VifPara"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+vifpara = "scripts.runner:run"

@@ -1,0 +1,5 @@
+{
+   "case_path": "data/ensightData/result/BE_SingleDrop.case",
+   "dir_plots": "plots/ensight",
+   "dir_logs": "logs/ensight"
+}

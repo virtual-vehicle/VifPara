@@ -1,0 +1,5 @@
+{
+   "case_path": "data/simpleFoam_motorbike/case.foam",
+   "dir_plots": "plots/motorbike",
+   "dir_logs": "logs/motorbike"
+}

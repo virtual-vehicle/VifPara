@@ -1,0 +1,64 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:148.0) Gecko/20100101 Firefox/148.0" version="29.6.1">
+  <diagram name="Page-1" id="qlyUyumz11n1W22QXNeg">
+    <mxGraphModel dx="1360" dy="1985" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="90" width="270" x="140" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="290" width="270" x="140" y="-10" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-32" edge="1" parent="1" source="L_bDDNrcWM5CDVVTKB5_-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="L_bDDNrcWM5CDVVTKB5_-28" value="accesses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="ParaView&lt;br&gt;Python&lt;br&gt;environment&lt;br&gt;(pvpython)" vertex="1">
+          <mxGeometry height="60" width="120" x="270" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-5" edge="1" parent="1" source="L_bDDNrcWM5CDVVTKB5_-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="L_bDDNrcWM5CDVVTKB5_-1" value="automates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="VifPara&lt;br&gt;package" vertex="1">
+          <mxGeometry height="60" width="120" x="270" y="325" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-11" edge="1" parent="1" source="L_bDDNrcWM5CDVVTKB5_-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="L_bDDNrcWM5CDVVTKB5_-10" value="creates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="VTK visualization&lt;br&gt;toolkit" vertex="1">
+          <mxGeometry height="60" width="120" x="270" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-8" edge="1" parent="1" source="L_bDDNrcWM5CDVVTKB5_-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="L_bDDNrcWM5CDVVTKB5_-16" value="loads">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="520" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-10" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="Visualization&lt;br&gt;(png, ogv, ...)" vertex="1">
+          <mxGeometry height="60" width="120" x="490" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-16" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" value="Simulation&lt;br&gt;results" vertex="1">
+          <mxGeometry height="100" width="80" x="510" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-21" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" value="VifPara&lt;br&gt;Python&lt;br&gt;script" vertex="1">
+          <mxGeometry height="100" width="80" x="510" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-24" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="ParaView" vertex="1">
+          <mxGeometry height="50" width="70" x="150" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-27" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="VifPara&lt;br&gt;Python&lt;br&gt;Environment" vertex="1">
+          <mxGeometry height="50" width="70" x="150" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-31" edge="1" parent="1" source="L_bDDNrcWM5CDVVTKB5_-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="L_bDDNrcWM5CDVVTKB5_-3" value="uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L_bDDNrcWM5CDVVTKB5_-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="ParaView&lt;br&gt;software" vertex="1">
+          <mxGeometry height="60" width="120" x="270" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="Ui1eQR1ySCJtXoOj3MS8-1" edge="1" parent="1" source="L_bDDNrcWM5CDVVTKB5_-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="L_bDDNrcWM5CDVVTKB5_-21" value="runs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
