@@ -80,7 +80,7 @@ Tested and working configurations are:
 # Installation & Use
 For information of how to install and use VifPara consult the user documentation and API reference:
 
-<b>[User Documentation](documentation/markdown/index.md)</b>
+<b>[User Documentation](https://vifpara.readthedocs.io/en/latest/)</b>
 
 Alternatively you can use the [documentation in the GitHub repo](documentation/markdown/index.md).
 
