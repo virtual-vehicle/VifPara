@@ -82,6 +82,8 @@ For information of how to install and use VifPara consult the user documentation
 
 <b>[User Documentation](https://vifpara.readthedocs.io/en/latest/)</b>
 
+<b>[Python Package](https://pypi.org/project/vifpara/)</b>
+
 In the [examples directory](examples/), you can find several example scripts of how to use VifPara, which can be used as templates to start from. The result of most example scripts can be found in the [reference_exports directory](examples/reference_exports/) in the examples directory.
 
 
