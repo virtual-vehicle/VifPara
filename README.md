@@ -7,7 +7,7 @@
 <div align="center">
   <img alt="OS" src=https://img.shields.io/badge/OS-Linux,Windows-blue?style=flat-square>
   <img alt="Languages" src=https://img.shields.io/badge/Language-Python%203.10%E2%80%933.12-red?style=flat-square>
-  <img alt="Version" src=https://img.shields.io/badge/Version-1.3.3-green?style=flat-square>
+  <img alt="Version" src=https://img.shields.io/badge/Version-1.3.3a1-green?style=flat-square>
   <img alt="License" src=https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square>
 </div>
 
@@ -81,8 +81,6 @@ Tested and working configurations are:
 For information of how to install and use VifPara consult the user documentation and API reference:
 
 <b>[User Documentation](https://vifpara.readthedocs.io/en/latest/)</b>
-
-Alternatively you can use the [documentation in the GitHub repo](documentation/markdown/index.md).
 
 In the [examples directory](examples/), you can find several example scripts of how to use VifPara, which can be used as templates to start from. The result of most example scripts can be found in the [reference_exports directory](examples/reference_exports/) in the examples directory.
 
