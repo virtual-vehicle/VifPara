@@ -1,7 +1,7 @@
 <div align="center">
 
   <h1>VifPara</h1>
-  <h2>OpenFoam & MESHFREE Post-Processing Toolkit</h2>
+  <h2>CFD Post-Processing Toolkit</h2>
 </div>
 
 <div align="center">
@@ -11,8 +11,8 @@
   <img alt="License" src=https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square>
 </div>
 
-VifPara is a Python library that automates ParaView to produce high‑quality visuals from OpenFOAM and MESHFREE simulations.
-It helps you generate reproducible 2D/3D plots, animations, comparative layouts, and batch visualizations.
+VifPara is a Python library that automates ParaView to produce high‑quality visuals from CFD simulation results from different CFD frameworks.
+It helps you automate the generation of reproducible 2D/3D plots, animations, comparative layouts, and batch visualizations.
 
 # Key Features
 - **Cross-platform compatibility** - Works on Linux and Windows
@@ -20,6 +20,7 @@ It helps you generate reproducible 2D/3D plots, animations, comparative layouts,
 - **Flexible configuration** - JSON-based configuration system
 - **Comprehensive visualization** - 2D slices, 3D views, animations, and more
 - **Visualization Automation** - Generate many different visualizations and animations with a single script
+- **Various Frameworks** - Developed with OpenFoam & MESHFREE. Other frameworks can be implemented upon request
 
 # Example Code
 The following code takes a finished OpenFoam simulation testcase and outputs an image of a slice of the case through the center with a view along the y-axis.
@@ -91,7 +92,7 @@ In the [examples directory](examples/), you can find several example scripts of 
 Virtual Vehicle Research GmbH: https://www.v2c2.at
 
 ## Team
-
+  - **Group Lead** - Alexander Kospach (alexander.kospach@v2c2.at)
   - **Project Lead** - Cyril Marx (cyril.marx@v2c2.at)
   - **Developer** - Juliana Madritsch
   - **Developer** - Florian Michelic
