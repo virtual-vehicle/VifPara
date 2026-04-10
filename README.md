@@ -1,7 +1,7 @@
 <div align="center">
 
   <h1>VifPara</h1>
-  <h2>CFD Post-Processing Toolkit</h2>
+  <h2>CAE Post-Processing Toolkit</h2>
 </div>
 
 <div align="center">
@@ -11,7 +11,8 @@
   <img alt="License" src=https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square>
 </div>
 
-VifPara is a Python library that automates ParaView to produce high‑quality visuals from CFD simulation results from different CFD frameworks.
+VifPara is a Python library that automates ParaView to produce high‑quality visuals from CAE simulation results from different
+CAE (computer-aided engineering) frameworks.
 It helps you automate the generation of reproducible 2D/3D plots, animations, comparative layouts, and batch visualizations.
 
 # Key Features
