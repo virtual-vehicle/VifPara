@@ -39,8 +39,8 @@ echo "=============================================="
 sleep 2.0
 
 find dist/ -name '*.whl' -delete
-python3 -m build
 find dist/ -name '*.tar.gz' -delete
+python3 -m build
 
 # Generates the updated documentation.
 echo ""
