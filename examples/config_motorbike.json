@@ -1,5 +1,5 @@
 {
    "case_path": "data/simpleFoam_motorbike/case.foam",
-   "dir_plots": "plots/motorbike",
-   "dir_logs": "logs/motorbike"
+   "plot_path": "plots/motorbike",
+   "log_path": "logs/motorbike"
 }

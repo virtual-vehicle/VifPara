@@ -1,6 +1,6 @@
 <!-- vifpara documentation master file -->
 
-# Welcome to VifPara’s 1.3.3 documentation
+# Welcome to VifPara’s 1.3.4 documentation
 
 # Contents:
 

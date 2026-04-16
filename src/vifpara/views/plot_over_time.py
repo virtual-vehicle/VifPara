@@ -85,7 +85,7 @@ class PlotOverTime(IViewObject):
         return self._plot_over_time_obj
 
     def export_as_csv(self, config: Config, filename: str):
-        full_path: str = config.get_dir_plots() + filename + ".csv"
+        full_path: str = config.get_plot_path() + filename + ".csv"
         logger.info(f"Saving plot to file {full_path}.")
 
         fields = self._fields.copy()

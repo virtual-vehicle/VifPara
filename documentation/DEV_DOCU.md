@@ -4,8 +4,11 @@
 To release a new version, follow the next steps.
 
 1. Write the new version number into the pyproject.toml (version = ). All other version occurences are automatically replaced with build.sh and generate_docs.sh.
-2. Run the build.sh to build the new .whl file into the dist directory. This also automatically runs generate_docs.sh.
-3. Add a comprehensive but brief update note to docs/UPDATES.md for your new version.
+2. Add a comprehensive but brief update note to docs/UPDATES.md for your new version.
+3. Run generate_docs.sh to update the documentation.
+4. Run the build.sh to build the new .whl file into the dist directory. This also automatically runs generate_docs.sh.
+5. Push the project to the remote GitHub repository.
+6. Run deploy_pypi.sh to upload the whl file to the PyPi repository.
 
 > **Warning**
 > Each release MUST have a higher version number than the previous ones. Otherwise, the users could experience an unreliable installation process.
@@ -35,6 +38,7 @@ vifpara/
 |
 ├── .readthedocs.yaml         # The configuration for the automatic documentation build
 ├── build.sh                  # Script for autobuilding package and setting up build venv
+├── deploy_pypi.sh            # Deploys the built whl file to the PyPi repository with the new version number
 ├── generate_docs.sh          # A script to render the documentation html files
 ├── initialize_docs.sh        # A script to freshly initialize all documentation generation files
 ├── LICENSE.txt               # The license of the project

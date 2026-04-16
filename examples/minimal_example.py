@@ -6,8 +6,9 @@ from vifpara import *
 if __name__ == "__main__":
     # Read config and load case
     config = Config(custom_config = {"case_path": "data/simpleFoam_motorbike/case.foam",
-                                     "dir_plots": "plots/motorbike",
-                                     "dir_logs": "logs/motorbike"})
+                                     "plot_path": "plots/motorbike",
+                                     "log_path": "logs/motorbike"})
+    logger.set_log_path(config.get_log_path())
     case = Case(config=config, loader="openfoam", case_type=CaseType.RECONSTRUCTED)
 
     # Define single view layout

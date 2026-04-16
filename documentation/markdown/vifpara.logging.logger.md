@@ -3,7 +3,7 @@
 A custom formatted logger, which logs to the stdout and optionally to a timestamped file.
 When the logfile reaches a certain size threshold, it is rotated.
 
-### *class* Logger(name, logpath=None)
+### *class* Logger
 
 Bases: [`object`](https://docs.python.org/3/library/functions.html#object)
 
@@ -22,8 +22,8 @@ But the actual logging handlers are only created once initialization is complete
 
 * **Parameters:**
   * **name** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – The name of the logger.
-  * **logpath** (*Optional* *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *]*) – The directory where log files should be stored.
-    If `None`, file logging is disabled until a logpath is provided.
+  * **log_path** (*Optional* *[*[*str*](https://docs.python.org/3/library/stdtypes.html#str) *]*) – The directory where log files should be stored.
+    If `None`, file logging is disabled until a log_path is provided.
 * **Returns:**
   None
 
@@ -63,6 +63,26 @@ Log an error‑level message.
 * **Returns:**
   None
 
+#### log_path_is_set()
+
+Checks if the log path in the logger is set.
+:return bool: True if there is a log path set.
+
+* **Return type:**
+  [bool](https://docs.python.org/3/library/functions.html#bool)
+
+#### set_log_path(log_path)
+
+Sets the log path to enable the logger to write output into logfiles in the
+set directory.
+
+* **Parameters:**
+  **log_path** ([*str*](https://docs.python.org/3/library/stdtypes.html#str)) – The path to put the logfiles.
+
+#### clear_log_path()
+
+Clears the log path, so that the logger does not write into a file anymore.
+
 #### capture_stderr()
 
 Capture all standard error (stderr) output and redirect it into the logger.
@@ -80,5 +100,3 @@ Restore stderr to its default behavior.
 
 * **Returns:**
   None
-
-### restore_stderr()

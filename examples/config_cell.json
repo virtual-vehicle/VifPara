@@ -1,5 +1,5 @@
 {
    "case_path": "data/cell_testcase/case.foam",
-   "dir_plots": "plots/cell",
-   "dir_logs": "logs/cell"
+   "plot_path": "plots/cell",
+   "log_path": "logs/cell"
 }

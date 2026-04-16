@@ -29,16 +29,16 @@ class Case:
         # For backwards compatibility, openfoam is still a valid parameter, even though it falls into the "file"
         # classification.
         if self.loader == "openfoam":
-            self._case = pv.OpenFOAMReader(FileName=config.get_casepath(), CaseType=int(case_type))
+            self._case = pv.OpenFOAMReader(FileName=config.get_case_path(), CaseType=int(case_type))
         elif self.loader == "ensight":
-            self._case = pv.EnSightReader(CaseFileName=config.get_casepath())
+            self._case = pv.EnSightReader(CaseFileName=config.get_case_path())
         elif self.loader == "file":
-            self._case = pv.OpenDataFile(filename=config.get_casepath())
+            self._case = pv.OpenDataFile(filename=config.get_case_path())
         else:
             raise TypeError("Invalid loader type provided to Case constructor.")
 
         if self._case is None:
-            raise TypeError(f"Wrong loader type provided. You used {self.loader} for {config.get_casepath()}.")
+            raise TypeError(f"Wrong loader type provided. You used {self.loader} for {config.get_case_path()}.")
 
         self._case.UpdatePipelineInformation()
         self._time_step_count: int = len(self._case.TimestepValues)

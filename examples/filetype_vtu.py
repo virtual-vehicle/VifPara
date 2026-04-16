@@ -19,9 +19,11 @@ if __name__ == '__main__':
     # Read config
     config = Config(custom_config = {
         "case_path": "data/filetypes/vtu_testfile.vtu",
-        "dir_plots": "plots/filetypes",
-        "dir_logs": "logs/filetypes"
+        "plot_path": "plots/filetypes",
+        "log_path": "logs/filetypes"
     })
+    # Set logpath to enable logger to print to a file
+    logger.set_log_path(config.get_log_path())
 
     # Load drop case
     case = Case(config=config, loader="file")

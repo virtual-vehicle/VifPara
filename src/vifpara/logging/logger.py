@@ -16,7 +16,7 @@ import time
 import colorama
 
 
-stderr_thread: Optional[int] = None
+_stderr_thread: Optional[int] = None
 _stderr_saved_fd: Optional[int] = None
 
 
@@ -29,7 +29,15 @@ class TextColor:
 
 
 class Logger:
-    def __init__(self, name: str, logpath: Optional[str] = None):
+    _instance = None
+
+    # Sets up the logger as a singleton.
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def __init__(self):
         """
         Initialize a Logger instance with optional file logging.
 
@@ -45,18 +53,22 @@ class Logger:
         But the actual logging handlers are only created once initialization is completed later.
 
         :param str name: The name of the logger.
-        :param Optional[str] logpath: The directory where log files should be stored.
-            If ``None``, file logging is disabled until a logpath is provided.
+        :param Optional[str] log_path: The directory where log files should be stored.
+            If ``None``, file logging is disabled until a log_path is provided.
         :return: None
         """
+
+        # Singleton guard. Never allow two instances at once. Every instance points to the same logger.
+        if getattr(self, "_initialized", False):
+            return
+
         colorama.init(autoreset=True)
 
-        self.name = name
-        self._logpath: Optional[str] = logpath
+        self.name = "VifPara"
+        self._log_path: Optional[str] = None
 
         self._timestamp = None
         self._initialized: bool = False
-        self._logpath_set: bool = False
 
         self._curr_log_path: Optional[Path] = None
         self._logfile_path: Optional[Path] = None
@@ -109,20 +121,31 @@ class Logger:
             self._initialize()
         self._logger.error(f"{colorama.Fore.RED}{msg}")
 
-    def logpath_is_set(self) -> bool:
-        return self._logpath_set
+    def log_path_is_set(self) -> bool:
+        """
+        Checks if the log path in the logger is set.
+        :return bool: True if there is a log path set.
+        """
+        return self._log_path is not None
 
-    def set_logpath(self, logpath: str):
-        if self._logpath_set:
-            return
+    def set_log_path(self, log_path: str):
+        """
+        Sets the log path to enable the logger to write output into logfiles in the
+        set directory.
 
-        self._logpath = logpath
+        :param str log_path: The path to put the logfiles.
+        """
+        self._log_path = log_path
 
-        # When the logger is initialized, it can print.
-        # When it already is initialized (due to using the logger) but the logpath is set afterward,
-        # reinitialize the logger. But then do not allow a new logpath to be set, so we can use multiple
-        # configs with the same logfile.
-        self._logpath_set = True
+        # This allows the logger to rebuild its handles again on first new log message.
+        self._initialized = False
+
+    def clear_log_path(self):
+        """
+        Clears the log path, so that the logger does not write into a file anymore.
+        """
+        self._log_path = None
+        # This allows the logger to rebuild its handles again on first new log message.
         self._initialized = False
 
     def capture_stderr(self):
@@ -135,7 +158,7 @@ class Logger:
 
         :return: None
         """
-        capture_stderr_os_level(lambda msg: logging_callback(msg))
+        _capture_stderr_os_level(lambda msg: _logging_callback(msg))
         # This atexit callback is a small timeframe for error messages to go through the stderr thread
         # before program terminates. Otherwise, the error messages just get cut off.
         atexit.register(atexit_callback)
@@ -146,7 +169,7 @@ class Logger:
 
         :return: None
         """
-        restore_stderr()
+        _restore_stderr()
         atexit.unregister(atexit_callback)
 
     def _drop_handles(self):
@@ -174,8 +197,8 @@ class Logger:
         self._logger.addHandler(self._stdout_handler)
 
         # Set file logging
-        if self._logpath is not None:
-            self._curr_log_path = Path(self._logpath)
+        if self._log_path is not None:
+            self._curr_log_path = Path(self._log_path)
             self._logfile_path = self._curr_log_path / Path(f"{self._timestamp}.log")
             self._curr_log_path.mkdir(parents=True, exist_ok=True)
             self._file_handler = RotatingFileHandler(
@@ -189,8 +212,8 @@ class Logger:
         self.info(f"Logging initialized for {sys.argv[0]}.")
 
 
-def capture_stderr_os_level(callback):
-    global stderr_thread, _stderr_saved_fd
+def _capture_stderr_os_level(callback):
+    global _stderr_thread, _stderr_saved_fd
 
     # Save current OS-level stderr (fd 2)
     _stderr_saved_fd = os.dup(2)
@@ -210,10 +233,10 @@ def capture_stderr_os_level(callback):
             for line in pipe:
                 callback(line.rstrip("\n"))
 
-    stderr_thread = threading.Thread(target=reader, daemon=True)
-    stderr_thread.start()
+    _stderr_thread = threading.Thread(target=reader, daemon=True)
+    _stderr_thread.start()
 
-def restore_stderr():
+def _restore_stderr():
     global _stderr_saved_fd
     if _stderr_saved_fd is not None:
         os.dup2(_stderr_saved_fd, 2)
@@ -223,7 +246,7 @@ def restore_stderr():
         # Recreate sys.stderr from the restored fd
         sys.stderr = os.fdopen(os.dup(2), "w", buffering=1, encoding="utf-8", errors="replace")
 
-def logging_callback(message):
+def _logging_callback(message):
     global logger
     split_msg: list = message.split("|", 1)
     if len(split_msg) == 1:
@@ -251,4 +274,4 @@ def atexit_callback():
     logger.info("Program finished.")
 
 # Create Singleton with predefined name
-logger: Logger = Logger("VifPara")
+logger: Logger = Logger()

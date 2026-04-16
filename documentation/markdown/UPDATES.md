@@ -1,5 +1,12 @@
 # Update Log
 
+<b>1.3.4</b> | 2026-04-16
+
+- Config does not implicitly set logging path anymore. This was a too confusing behavior in the background. Instead, the method logger.set_log_path() can now be used to explicitly set the path.
+- Logger is now a singleton class to avoid resource sharing requirements between multiple Logger instances.
+- Strengthened logger_example script.
+- Applied unified naming convention regarding paths in config, logger, and exporter.
+
 <b>1.3.3</b> | 2026-03-17
 
 - Implemented basic single file loading into cases by using the “file” loader argument in the Case constructor.

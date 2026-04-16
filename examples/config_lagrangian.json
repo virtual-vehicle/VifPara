@@ -1,5 +1,5 @@
 {
    "case_path": "data/data_lagrangian_particles/case.foam",
-   "dir_plots": "plots/lagrangian",
-   "dir_logs": "logs/lagrangian"
+   "plot_path": "plots/lagrangian",
+   "log_path": "logs/lagrangian"
 }

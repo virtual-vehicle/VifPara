@@ -19,8 +19,8 @@ A config must always be a dictionary with the following format and fields:
 {
 
 > “case_path”: “path/to/the/input/case/directory/or/file”,
-> “dir_plots”: “path/to/the/output/plot/directory”,
-> “dir_logs”: “path/to/the/output/logs/directory”
+> “plot_path”: “path/to/the/output/plot/directory”,
+> “log_path”: “path/to/the/output/logs/directory”
 
 }
 
@@ -50,7 +50,7 @@ Set the case path in the configuration.
 * **Returns:**
   None
 
-#### set_dir_plots(new_path)
+#### set_plot_path(new_path)
 
 Set the directory where plots should be written.
 
@@ -59,7 +59,7 @@ Set the directory where plots should be written.
 * **Returns:**
   None
 
-#### set_dir_logs(new_path)
+#### set_log_path(new_path)
 
 Set the directory where logs should be stored.
 
@@ -86,7 +86,7 @@ Get the value of a custom configuration field, if it exists.
 * **Returns:**
   The value of the field if present, otherwise `None`.
 
-#### get_casepath()
+#### get_case_path()
 
 Get the configured case path.
 
@@ -95,7 +95,7 @@ Get the configured case path.
 * **Return type:**
   [str](https://docs.python.org/3/library/stdtypes.html#str)
 
-#### get_dir_plots()
+#### get_plot_path()
 
 Get the directory where plots are stored.
 
@@ -104,7 +104,7 @@ Get the directory where plots are stored.
 * **Return type:**
   [str](https://docs.python.org/3/library/stdtypes.html#str)
 
-#### get_dir_logs()
+#### get_log_path()
 
 Get the directory where logs are stored.
 
@@ -113,7 +113,7 @@ Get the directory where logs are stored.
 * **Return type:**
   [str](https://docs.python.org/3/library/stdtypes.html#str)
 
-#### dir_logs_is_set()
+#### log_path_is_set()
 
 Check whether a logs directory is defined in the configuration.
 

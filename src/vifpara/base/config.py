@@ -22,8 +22,8 @@ class Config:
         A config must always be a dictionary with the following format and fields:
         {
            "case_path": "path/to/the/input/case/directory/or/file",
-           "dir_plots": "path/to/the/output/plot/directory",
-           "dir_logs": "path/to/the/output/logs/directory"
+           "plot_path": "path/to/the/output/plot/directory",
+           "log_path": "path/to/the/output/logs/directory"
         }
 
         :param str conf_filename: Path to the JSON configuration file to load.
@@ -40,16 +40,8 @@ class Config:
 
         self._check_config(self.config)
 
-        if self.dir_logs_is_set() and not logger.logpath_is_set():
-            logger.set_logpath(self.get_dir_logs())
-            logger.info(f"Using logs directory: {self.get_dir_logs()}")
-        elif logger.logpath_is_set():
-            logger.info("Logpath already set. Not using new one.")
-        else:
-            logger.info("No logs directory is set.")
-
-        logger.info(f"Using case path: {self.get_casepath()}")
-        logger.info(f"Using plots directory: {self.get_dir_plots()}")
+        logger.info(f"Using case path: {self.get_case_path()}")
+        logger.info(f"Using plots directory: {self.get_plot_path()}")
 
     def set_other_field(self, field: str, value):
         """
@@ -70,23 +62,23 @@ class Config:
         """
         self.config["case_path"] = new_path
 
-    def set_dir_plots(self, new_path: str):
+    def set_plot_path(self, new_path: str):
         """
         Set the directory where plots should be written.
 
         :param str new_path: The new path to the plots directory.
         :return: None
         """
-        self.config["dir_plots"] = new_path
+        self.config["plot_path"] = new_path
 
-    def set_dir_logs(self, new_path: str):
+    def set_log_path(self, new_path: str):
         """
         Set the directory where logs should be stored.
 
         :param str new_path: The new path to the logs directory.
         :return: None
         """
-        self.config["dir_logs"] = new_path
+        self.config["log_path"] = new_path
 
     def get_config(self) -> dict:
         """
@@ -108,7 +100,7 @@ class Config:
         else:
             return None
 
-    def get_casepath(self) -> str:
+    def get_case_path(self) -> str:
         """
         Get the configured case path.
 
@@ -116,29 +108,29 @@ class Config:
         """
         return self.config["case_path"]
 
-    def get_dir_plots(self) -> str:
+    def get_plot_path(self) -> str:
         """
         Get the directory where plots are stored.
 
         :return str: The path to the plots directory.
         """
-        return self.config["dir_plots"]
+        return self.config["plot_path"]
 
-    def get_dir_logs(self) -> str:
+    def get_log_path(self) -> str:
         """
         Get the directory where logs are stored.
 
         :return str: The path to the logs directory.
         """
-        return self.config["dir_logs"]
+        return self.config["log_path"]
 
-    def dir_logs_is_set(self) -> bool:
+    def log_path_is_set(self) -> bool:
         """
         Check whether a logs directory is defined in the configuration.
 
         :return bool: ``True`` if a logs directory is set, otherwise ``False``.
         """
-        return "dir_logs" in self.config
+        return "log_path" in self.config
 
     def get_filename(self) -> str:
         """
@@ -154,8 +146,8 @@ class Config:
 
         This writes a JSON file containing default values for:
         - ``case_path``
-        - ``dir_plots``
-        - ``dir_logs``
+        - ``plot_path``
+        - ``log_path``
 
         :param str conf_filename: The filename (including path) where the default
             configuration should be written.
@@ -164,8 +156,8 @@ class Config:
         # Data to be written
         dictionary = {
             "case_path": "./case.foam",
-            "dir_plots": "./plots/",
-            "dir_logs": "./logs/"
+            "plot_path": "./plots/",
+            "log_path": "./logs/"
         }
         # Serializing json
         json_object = json.dumps(dictionary, indent=4)
@@ -202,19 +194,19 @@ class Config:
 
         This method performs the following:
         - Ensures ``case_path`` exists and is valid.
-        - Ensures ``dir_plots`` ends with a slash and the directory exists (creates it if necessary).
-        - Ensures ``dir_logs`` ends with a slash and the directory exists (creates it if necessary).
+        - Ensures ``plot_path`` ends with a slash and the directory exists (creates it if necessary).
+        - Ensures ``log_path`` ends with a slash and the directory exists (creates it if necessary).
         - Raises exceptions when required keys are missing or invalid.
 
         :param dict config: The configuration dictionary to validate and normalize.
         :return: None
-        :raises KeyError: If required keys (``case_path``, ``dir_plots``) are missing.
+        :raises KeyError: If required keys (``case_path``, ``plot_path``) are missing.
         :raises OSError: If ``case_path`` is set but does not exist.
         """
         # Check case path
         if "case_path" in config:
-            if config["dir_plots"][-1] != "/":
-                config["dir_plots"] = f"{config['dir_plots']}/"
+            if config["plot_path"][-1] != "/":
+                config["plot_path"] = f"{config['plot_path']}/"
             case_exists = os.path.exists(config["case_path"])
             if not case_exists:
                 raise OSError(f"Case path in config invalid ({config['case_path']})")
@@ -222,23 +214,12 @@ class Config:
             raise KeyError("Missing 'case_path' in config.")
 
         # Check plots directory
-        if "dir_plots" in config:
-            if config["dir_plots"][-1] != "/":
-                config["dir_plots"] = f"{config['dir_plots']}/"
-            plots_dir_exists = os.path.exists(config["dir_plots"])
+        if "plot_path" in config:
+            if config["plot_path"][-1] != "/":
+                config["plot_path"] = f"{config['plot_path']}/"
+            plots_dir_exists = os.path.exists(config["plot_path"])
             if not plots_dir_exists:
                 logger.info("Plots directory not existing. Creating directory now.")
-                os.makedirs(config["dir_plots"])
+                os.makedirs(config["plot_path"])
         else:
-            raise KeyError("Missing 'dir_plots' in config.")
-
-        # Check logs directory
-        if "dir_logs" in config:
-            if config["dir_logs"][-1] != "/":
-                config["dir_logs"] = f"{config['dir_logs']}/"
-            logs_dir_exists = os.path.exists(config["dir_logs"])
-            if not logs_dir_exists:
-                logger.info("Logs directory not existing. Creating directory now.")
-                os.makedirs(config["dir_logs"])
-        else:
-            logger.warning("Missing 'dir_logs' in config. Script will work, but logs will not be stored in logfiles.")
+            raise KeyError("Missing 'plot_path' in config.")

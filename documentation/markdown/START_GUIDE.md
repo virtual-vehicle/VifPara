@@ -71,6 +71,7 @@ if __name__ == "__main__":
                                      
     # 2. Load case
     case = Case(config=config, case_type=CaseType.RECONSTRUCTED)
+    logger.set_log_path(config.get_log_path())
 
     # 3. Create layout
     layout = Layout([1])

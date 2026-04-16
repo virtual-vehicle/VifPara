@@ -38,6 +38,7 @@ echo "Building VifPara wheel file (python package)"
 echo "=============================================="
 sleep 2.0
 
+find dist/ -name '*.whl' -delete
 python3 -m build
 find dist/ -name '*.tar.gz' -delete
 

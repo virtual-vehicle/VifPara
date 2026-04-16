@@ -36,9 +36,9 @@ class Exporter:
         :param str filename: The base filename (without extension) for the exported image.
         :return: None
         """
-        logger.info(f"Exporting snapshot of layout to {self.config.get_dir_plots()}{filename}.png.")
+        logger.info(f"Exporting snapshot of layout to {self.config.get_plot_path()}{filename}.png.")
         self.layout.prepare_export()
-        pv.SaveScreenshot(self.config.get_dir_plots() + filename + ".png", self.layout.get_layout())
+        pv.SaveScreenshot(self.config.get_plot_path() + filename + ".png", self.layout.get_layout())
 
     def save_at_timesteps(self, filename: str, timesteps: list[float]):
         """
@@ -51,7 +51,7 @@ class Exporter:
         :param list[float] timesteps: The list of timesteps at which images should be saved.
         :return: None
         """
-        logger.info(f"Exporting snapshot at {len(timesteps)} timesteps to {self.config.get_dir_plots()}{filename}.")
+        logger.info(f"Exporting snapshot at {len(timesteps)} timesteps to {self.config.get_plot_path()}{filename}.")
 
         self.layout.prepare_export()
         animation_scene = pv.GetAnimationScene()
@@ -92,7 +92,7 @@ class Exporter:
         :param str format: The output format (e.g., ``".png"``, ``".jpg"``, ``".jpeg"``, ``".ogv"``).
         :return: None
         """
-        logger.info(f"Exporting animation to {self.config.get_dir_plots()}{filename}{format}.")
+        logger.info(f"Exporting animation to {self.config.get_plot_path()}{filename}{format}.")
         if not is_valid_extension(format, [".png", ".jpg", ".jpeg", ".ogv"]):
             return
         if start_frame < 0:
@@ -112,7 +112,7 @@ class Exporter:
 
         self.layout.prepare_export()
         pv.SaveAnimation(
-            self.config.get_dir_plots() + filename + format,
+            self.config.get_plot_path() + filename + format,
             self.layout.get_layout(),
             FrameWindow=[start_frame, end_frame + 1],
             FrameRate=framerate
@@ -136,7 +136,7 @@ class Exporter:
         :param str format: The output format (e.g. ``".png"``, ``".jpg"``, ``".ogv"``).
         :return: None
         """
-        logger.info(f"Exporting camera orbit animation to {self.config.get_dir_plots()}{filename}{format}.")
+        logger.info(f"Exporting camera orbit animation to {self.config.get_plot_path()}{filename}{format}.")
         if not is_valid_extension(format, [".png", ".jpg", ".jpeg", ".ogv"]):
             return
 
@@ -182,7 +182,7 @@ class Exporter:
         # play animation
         animation_scene.Play()
         pv.SaveAnimation(
-            self.config.get_dir_plots() + filename + format,
+            self.config.get_plot_path() + filename + format,
             self.layout.get_layout(),
             FrameWindow=[0, nr_frames - 1],
             FrameRate=framerate

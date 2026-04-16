@@ -16,7 +16,10 @@ if __name__ == '__main__':
 
     set_palette(PaletteOption.WHITE)
 
+    # Read config
     config = Config("config_lagrangian.json")
+    # Set logpath to enable logger to print to a file
+    logger.set_log_path(config.get_log_path())
 
     # Load Case
     case = Case(config=config, loader="openfoam", case_type=CaseType.RECONSTRUCTED)

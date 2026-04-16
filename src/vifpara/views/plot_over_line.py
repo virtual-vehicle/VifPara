@@ -68,7 +68,7 @@ class PlotOverLine(IViewObject):
             information are added to the exported CSV.
         :return: None
         """
-        full_path: str = config.get_dir_plots() + filename + ".csv"
+        full_path: str = config.get_plot_path() + filename + ".csv"
         logger.info(f"Saving plot to file {full_path}.")
 
         animation_scene = pv.GetAnimationScene()

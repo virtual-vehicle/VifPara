@@ -7,13 +7,15 @@
 <div align="center">
   <img alt="OS" src=https://img.shields.io/badge/OS-Linux,Windows-blue?style=flat-square>
   <img alt="Languages" src=https://img.shields.io/badge/Language-Python%203.10%E2%80%933.12-red?style=flat-square>
-  <img alt="Version" src=https://img.shields.io/badge/Version-1.3.3-green?style=flat-square>
+  <img alt="Version" src=https://img.shields.io/badge/Version-1.3.4-green?style=flat-square>
   <img alt="License" src=https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square>
 </div>
 
 VifPara is a Python library that automates ParaView to produce high‑quality visuals from CAE simulation results from different
 CAE (computer-aided engineering) frameworks.
 It helps you automate the generation of reproducible 2D/3D plots, animations, comparative layouts, and batch visualizations.
+VifPara is not here to replace manual GUI-based post-processing workflows, but to enable intuitive automation of commonly needed 
+visualization procedures.
 
 # Key Features
 - **Cross-platform compatibility** - Works on Linux and Windows
@@ -36,6 +38,7 @@ if __name__ == "__main__":
     config = Config(custom_config = {"case_path": "tutorials/incompressible/simpleFoam/motorBike/case.foam",
                                      "dir_plots": "plots/motorBike",
                                      "dir_logs": "logs/motorBike"})
+    logger.set_log_path(config.get_log_path())
     case = Case(config=config, case_type=CaseType.RECONSTRUCTED)
 
     # Define single view layout
