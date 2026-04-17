@@ -36,8 +36,8 @@ from vifpara import *
 if __name__ == "__main__":
     # Read config and load case
     config = Config(custom_config = {"case_path": "tutorials/incompressible/simpleFoam/motorBike/case.foam",
-                                     "dir_plots": "plots/motorBike",
-                                     "dir_logs": "logs/motorBike"})
+                                     "plot_path": "plots/motorBike",
+                                     "log_path": "logs/motorBike"})
     logger.set_log_path(config.get_log_path())
     case = Case(config=config, case_type=CaseType.RECONSTRUCTED)
 

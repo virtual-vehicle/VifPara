@@ -28,8 +28,8 @@ The config.json needs to look like this:
 ```json
 {
    "case_path": "<path/to/your/case>",
-   "dir_plots": "<path/to/your/output/image/directory>",
-   "dir_logs":  "<path/to/your/log/file/directory>"
+   "plot_path": "<path/to/your/output/image/directory>",
+   "log_path":  "<path/to/your/log/file/directory>"
 }
 ```
 
@@ -46,8 +46,8 @@ Alternatively set the config directly in your Python code like so:
 ```python
 config = Config(custom_config = {
                   "case_path": "<path/to/your/case>",
-                  "dir_plots": "<path/to/your/output/image/directory>",
-                  "dir_logs":  "<path/to/your/log/file/directory>"
+                  "plot_path": "<path/to/your/output/image/directory>",
+                  "log_path":  "<path/to/your/log/file/directory>"
                })
 ```
 
@@ -63,8 +63,8 @@ from vifpara import *
 if __name__ == "__main__":
     # 1. Read config
     config = Config(custom_config = {"case_path": "tutorials/incompressible/simpleFoam/motorBike/case.foam",
-                                     "dir_plots": "plots/motorBike",
-                                     "dir_logs": "logs/motorBike"})
+                                     "plot_path": "plots/motorBike",
+                                     "log_path": "logs/motorBike"})
                                      
     # 2. Load case
     case = Case(config=config, case_type=CaseType.RECONSTRUCTED)
